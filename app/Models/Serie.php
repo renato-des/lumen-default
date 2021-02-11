@@ -14,4 +14,9 @@ class Serie extends Model
     {
         return $this->hasMany(Episodio::class);
     }
+
+    protected function serializeDate(\DateTimeInterface $date): string
+    {
+        return \Carbon\Carbon::instance($date)->toIso8601String();
+    }
 }

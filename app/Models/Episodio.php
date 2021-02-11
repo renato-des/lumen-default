@@ -13,4 +13,9 @@ class Episodio extends Model
     {
         return $this->belongsTo(Serie::class);
     }
+
+    protected function serializeDate(\DateTimeInterface $date): string
+    {
+        return \Carbon\Carbon::instance($date)->toIso8601String();
+    }
 }
