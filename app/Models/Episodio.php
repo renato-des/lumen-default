@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Episodio extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['temporada', 'numero', 'assistido'];
+    protected $fillable = ['temporada', 'numero', 'assistido', 'serie_id'];
     public function serie()
     {
         return $this->belongsTo(Serie::class);
+    }
+
+    public function getAssistidoAttribute($assistido): bool
+    {
+        return $assistido;
     }
 
     protected function serializeDate(\DateTimeInterface $date): string
