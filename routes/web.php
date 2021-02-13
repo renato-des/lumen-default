@@ -18,7 +18,7 @@ $router->post('/', function () use ($router) {
 
 $router->post('/api/login', 'TokenController@gerarToken');
 
-$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'autenticador'], function () use ($router) {
     $router->group(['prefix' => 'series'], function () use ($router) {
         $router->post('', 'SeriesController@store');
         $router->get('', 'SeriesController@index');
